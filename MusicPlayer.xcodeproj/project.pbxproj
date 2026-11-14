@@ -6,12 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8494266830A80A4000FC19B8 /* SwiftAudioEx in Frameworks */ = {isa = PBXBuildFile; productRef = 8494266730A80A4000FC19B8 /* SwiftAudioEx */; };
+		8494266B30A80A5200FC19B8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8494266A30A80A5200FC19B8 /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		8494263F30A7FBCA00FC19B8 /* MusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8494265130A7FBCC00FC19B8 /* Exceptions for "MusicPlayer" folder in "MusicPlayer" target */ = {
+		8494265930A7FF4B00FC19B8 /* Exceptions for "MusicPlayer" folder in "MusicPlayer" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -24,7 +29,7 @@
 		8494264130A7FBCA00FC19B8 /* MusicPlayer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				8494265130A7FBCC00FC19B8 /* Exceptions for "MusicPlayer" folder in "MusicPlayer" target */,
+				8494265930A7FF4B00FC19B8 /* Exceptions for "MusicPlayer" folder in "MusicPlayer" target */,
 			);
 			path = MusicPlayer;
 			sourceTree = "<group>";
@@ -36,6 +41,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8494266830A80A4000FC19B8 /* SwiftAudioEx in Frameworks */,
+				8494266B30A80A5200FC19B8 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,8 @@
 			);
 			name = MusicPlayer;
 			packageProductDependencies = (
+				8494266730A80A4000FC19B8 /* SwiftAudioEx */,
+				8494266A30A80A5200FC19B8 /* Alamofire */,
 			);
 			productName = MusicPlayer;
 			productReference = 8494263F30A7FBCA00FC19B8 /* MusicPlayer.app */;
@@ -107,6 +116,10 @@
 			);
 			mainGroup = 8494263630A7FBCA00FC19B8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8494266630A80A4000FC19B8 /* XCRemoteSwiftPackageReference "SwiftAudio" */,
+				8494266930A80A5200FC19B8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8494264030A7FBCA00FC19B8 /* Products */;
 			projectDirPath = "";
@@ -345,6 +358,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8494266630A80A4000FC19B8 /* XCRemoteSwiftPackageReference "SwiftAudio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/doublesymmetry/SwiftAudio.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		8494266930A80A5200FC19B8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8494266730A80A4000FC19B8 /* SwiftAudioEx */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8494266630A80A4000FC19B8 /* XCRemoteSwiftPackageReference "SwiftAudio" */;
+			productName = SwiftAudioEx;
+		};
+		8494266A30A80A5200FC19B8 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8494266930A80A5200FC19B8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8494263730A7FBCA00FC19B8 /* Project object */;
 }

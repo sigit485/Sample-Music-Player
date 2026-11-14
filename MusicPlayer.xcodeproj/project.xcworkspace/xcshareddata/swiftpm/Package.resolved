@@ -1,0 +1,24 @@
+{
+  "originHash" : "d509118fce77cdcc0a7e75adc82794195ae9317de9430e26df6d80589e353fd9",
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "bda9ed57d72988a3a2ada33d824583541f86eac6",
+        "version" : "5.12.2"
+      }
+    },
+    {
+      "identity" : "swiftaudio",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/doublesymmetry/SwiftAudio.git",
+      "state" : {
+        "revision" : "7b506bebabd68b542256c0e1e55519fab5f4c092",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
