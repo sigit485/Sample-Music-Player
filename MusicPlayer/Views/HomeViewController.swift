@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import SwiftAudioEx
 import Kingfisher
+import SwiftAudioEx
 
 class HomeViewController: HomeBaseViewController, HomeViewOutput {
     
-    private let player = AudioPlayer()
     private var vm: HomeViewModel?
 
     override func viewDidLoad() {
@@ -45,6 +44,18 @@ class HomeViewController: HomeBaseViewController, HomeViewOutput {
             for: .touchUpInside
         )
         
+        homeMiniView.forwardButton.addTarget(
+            self,
+            action: #selector(didNextTapped),
+            for: .touchUpInside
+        )
+        
+        homeMiniView.backwardButton.addTarget(
+            self,
+            action: #selector(didPreviousTapped),
+            for: .touchUpInside
+        )
+        
         searchField.delegate = self
     }
     
@@ -53,10 +64,36 @@ class HomeViewController: HomeBaseViewController, HomeViewOutput {
         self.tableView.reloadData()
     }
     
+    func updateStateUI(state: AudioPlayerState) {
+        DispatchQueue.main.async {
+            switch state {
+            case .playing:
+                self.homeMiniView.setupState(.paused)
+            case .paused:
+                self.homeMiniView.setupState(.play)
+            case .stopped:
+                self.homeMiniView.setupState(.play)
+            default:
+                break
+            }
+        }
+    }
+    
     
     @objc func didPlayTapped() {
-        let audioItem = DefaultAudioItem(audioUrl: "https://github.com/rafaelreis-hotmart/Audio-Sample-files/raw/master/sample.mp3", sourceType: .stream)
-        player.load(item: audioItem, playWhenReady: true)
+        if vm?.isPlaying == true {
+            vm?.pause()
+        } else {
+            vm?.resume()
+        }
+    }
+    
+    @objc func didNextTapped() {
+        vm?.next()
+    }
+    
+    @objc func didPreviousTapped() {
+        vm?.previous()
     }
     
 
@@ -93,6 +130,10 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        vm?.play(index: indexPath.row)        
     }
 }
 

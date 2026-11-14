@@ -17,7 +17,7 @@ class HomeServices: HomeServicesProtocol {
     
     
     func getSongItunes(keyword: String?, successHandler: @escaping (([HomeSongResult])) -> Void) {
-        let url = URL(string: "https://itunes.apple.com/search?term=\(keyword ?? "pop")")!
+        let url = URL(string: "https://itunes.apple.com/search?term=\(keyword ?? "pop")&entity=song")!
         
         AF.request(url)
             .validate()

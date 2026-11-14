@@ -7,7 +7,15 @@
 
 import UIKit
 
+enum HomeMiniState {
+    case play
+    case paused
+    case stopped
+}
+
 class HomeMiniPlayerView: UIView {
+    
+    let currentState: HomeMiniState = .stopped
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -16,6 +24,17 @@ class HomeMiniPlayerView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupState(_ state: HomeMiniState) {
+        switch state {
+        case .play:
+            playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        case .paused:
+            playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        case .stopped:
+            playPauseButton.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+        }
     }
     
     private func initConstraint() {
