@@ -56,7 +56,7 @@ class HomeBaseViewController: UIViewController {
         return view
     }()
     
-    private let searchField: UISearchTextField = {
+    let searchField: UISearchTextField = {
         let view = UISearchTextField()
         view.translatesAutoresizingMaskIntoConstraints = false
         

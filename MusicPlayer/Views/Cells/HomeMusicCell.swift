@@ -53,12 +53,14 @@ class HomeMusicCell: UITableViewCell {
         return stack
     }()
     
-    private let artworkImageView: UIImageView = {
+    let artworkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .gray
         imageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        imageView.layer.cornerRadius = 10
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     

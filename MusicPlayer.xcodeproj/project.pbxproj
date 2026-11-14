@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8494266830A80A4000FC19B8 /* SwiftAudioEx in Frameworks */ = {isa = PBXBuildFile; productRef = 8494266730A80A4000FC19B8 /* SwiftAudioEx */; };
 		8494266B30A80A5200FC19B8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8494266A30A80A5200FC19B8 /* Alamofire */; };
+		849426B430A8182900FC19B8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 849426B330A8182900FC19B8 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849426B430A8182900FC19B8 /* Kingfisher in Frameworks */,
 				8494266830A80A4000FC19B8 /* SwiftAudioEx in Frameworks */,
 				8494266B30A80A5200FC19B8 /* Alamofire in Frameworks */,
 			);
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				8494266730A80A4000FC19B8 /* SwiftAudioEx */,
 				8494266A30A80A5200FC19B8 /* Alamofire */,
+				849426B330A8182900FC19B8 /* Kingfisher */,
 			);
 			productName = MusicPlayer;
 			productReference = 8494263F30A7FBCA00FC19B8 /* MusicPlayer.app */;
@@ -119,6 +122,7 @@
 			packageReferences = (
 				8494266630A80A4000FC19B8 /* XCRemoteSwiftPackageReference "SwiftAudio" */,
 				8494266930A80A5200FC19B8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				849426B230A8182900FC19B8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8494264030A7FBCA00FC19B8 /* Products */;
@@ -376,6 +380,14 @@
 				minimumVersion = 5.12.2;
 			};
 		};
+		849426B230A8182900FC19B8 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.15.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -388,6 +400,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8494266930A80A5200FC19B8 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		849426B330A8182900FC19B8 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 849426B230A8182900FC19B8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
