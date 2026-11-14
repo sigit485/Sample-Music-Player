@@ -56,12 +56,29 @@ class HomeViewController: HomeBaseViewController, HomeViewOutput {
             for: .touchUpInside
         )
         
+        homeMiniView.slider.addTarget(self, action: #selector(onSliderValChanged), for: .valueChanged)
+        
         searchField.delegate = self
     }
     
+    @objc func onSliderValChanged(slider: UISlider, event: UIEvent) {
+        let currentTimeSlider = TimeInterval(slider.value)
+        vm?.seek(to: currentTimeSlider)
+    }
+    
+    func updateSlider(position: Double?, maxTime: Double?, elapsedTime: Double?) {
+        guard (maxTime ?? 0) > 0 else { return }
+        
+        homeMiniView.slider.value = Float(position ?? 0)
+        homeMiniView.slider.maximumValue = Float(maxTime ?? 0)
+    }
+    
+    
     func updateUI() {
-        self.stopIndicatingActivity()
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.stopIndicatingActivity()
+            self.tableView.reloadData()
+        }
     }
     
     func updateStateUI(state: AudioPlayerState) {
@@ -119,6 +136,13 @@ extension HomeViewController: UITableViewDataSource {
                 .transition(.fade(1)),
                 .cacheOriginalImage
             ])
+        }
+        
+        if data?.trackName == vm?.currentTitleSong {
+            cell.indicator.startAnimating()
+            cell.indicator.isHidden = false
+        } else {
+            cell.indicator.isHidden = true
         }
         
         

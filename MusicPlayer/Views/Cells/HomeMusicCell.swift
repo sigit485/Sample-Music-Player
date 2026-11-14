@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ActivityIndicatorView
 
 class HomeMusicCell: UITableViewCell {
     static let identifier = "HomeMusicCell"
@@ -40,6 +41,7 @@ class HomeMusicCell: UITableViewCell {
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.addArrangedSubview(artworkImageView)
         stack.addArrangedSubview(vStackLabel)
+        stack.addArrangedSubview(indicator)
         return stack
     }()
     
@@ -92,6 +94,14 @@ class HomeMusicCell: UITableViewCell {
         label.font = .systemFont(ofSize: 14)
         label.numberOfLines = 0
         return label
+    }()
+    
+    lazy var indicator: UIActivityIndicatorView = {
+        let activityView = UIActivityIndicatorView(style: .large)
+        activityView.color = .systemBlue
+        activityView.translatesAutoresizingMaskIntoConstraints = false
+        activityView.isHidden = true
+        return activityView
     }()
     
 }

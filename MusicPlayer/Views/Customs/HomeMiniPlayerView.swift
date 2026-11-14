@@ -45,6 +45,13 @@ class HomeMiniPlayerView: UIView {
             vStackContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             vStackContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         ])
+        
+        addSubview(slider)
+        NSLayoutConstraint.activate([
+            slider.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            slider.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            slider.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0)
+        ])
     }
     
     lazy var vStackContainer : UIStackView = {
@@ -90,6 +97,15 @@ class HomeMiniPlayerView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "forward.end.alt.fill"), for: .normal)
         return button
+    }()
+    
+    lazy var slider: UISlider = {
+        let view = UISlider()
+        view.minimumTrackTintColor = .systemBlue
+        view.maximumTrackTintColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 6).isActive = true
+        return view
     }()
 
 }

@@ -11,6 +11,7 @@ import SwiftAudioEx
 protocol HomeViewOutput {
     func updateUI()
     func updateStateUI(state: AudioPlayerState)
+    func updateSlider(position: Double?, maxTime: Double?, elapsedTime: Double?)
 }
 
 protocol HomeViewModelProtocol {
@@ -19,6 +20,7 @@ protocol HomeViewModelProtocol {
     var view: HomeViewOutput? { get set }
     var player: QueuedAudioPlayer? { get set }
     var isPlaying: Bool? { get set }
+    var currentTitleSong: String? { get set }
     
     func getSongs(keyword: String?)
     func play(index: Int)
@@ -26,6 +28,7 @@ protocol HomeViewModelProtocol {
     func previous()
     func pause()
     func resume()
+    func seek(to: TimeInterval)
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -34,12 +37,47 @@ class HomeViewModel: HomeViewModelProtocol {
     var songs: [HomeSongResult]?
     var view: HomeViewOutput?
     var isPlaying: Bool?
+    var currentTitleSong: String?
     
     init(view: HomeViewOutput? = nil) {
         self.service = HomeServices()
         self.view = view
         self.player = QueuedAudioPlayer()
+        self.player?.event.playWhenReadyChange.addListener(self, handlePlayWhenReadyChange)
         self.player?.event.stateChange.addListener(self, handleAudioPlayerStateChange(state:))
+        self.player?.event.updateDuration.addListener(self, handleAudioPlayerUpdateDuration(data:))
+        self.player?.event.secondElapse.addListener(self, handleAudioPlayerSecondElapsed)
+    }
+    
+    private func renderTimes() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            let position = player?.currentTime
+            let maxTime = player?.duration
+//            let elapsedTime = player?.currentTime.secondsToString()
+//            let remainingTime = ((player?.duration ?? 0) - (player?.currentTime ?? 0)).secondsToString()
+            
+            view?.updateSlider(
+                position: position,
+                maxTime: maxTime,
+                elapsedTime: player?.currentTime
+            )
+        }
+    }
+    
+    func handlePlayWhenReadyChange(data: AudioPlayer.PlayWhenReadyChangeData) {
+        print("playWhenReady=\(data)")
+        self.currentTitleSong = self.player?.currentItem?.getTitle()
+        view?.updateUI()
+    }
+
+    
+    func handleAudioPlayerUpdateDuration(data: AudioPlayer.UpdateDurationEventData) {
+        renderTimes()
+    }
+    
+    func handleAudioPlayerSecondElapsed(data: AudioPlayer.SecondElapseEventData) {
+        renderTimes()
     }
     
     func handleAudioPlayerStateChange(state: AudioPlayerState) {
@@ -67,7 +105,7 @@ class HomeViewModel: HomeViewModelProtocol {
         self.view?.updateStateUI(state: .stopped)
         
         let items = songs?.map {
-            return DefaultAudioItem(audioUrl: $0.previewURL ?? "", sourceType: .stream)
+            return DefaultAudioItem(audioUrl: $0.previewURL ?? "", artist: $0.artistName, title: $0.trackName, sourceType: .stream)
         } ?? []
         
         player?.clear()
@@ -78,10 +116,14 @@ class HomeViewModel: HomeViewModelProtocol {
     
     func next() {
         player?.next()
+        currentTitleSong = self.player?.currentItem?.getTitle()
+        view?.updateUI()
     }
     
     func previous() {
         player?.previous()
+        currentTitleSong = self.player?.currentItem?.getTitle()
+        view?.updateUI()
     }
     
     func pause() {
@@ -90,5 +132,10 @@ class HomeViewModel: HomeViewModelProtocol {
     
     func resume() {
         player?.play()
+    }
+    
+    func seek(to time: TimeInterval) {
+        guard isPlaying == true else { return }
+        player?.seek(to: time)
     }
 }

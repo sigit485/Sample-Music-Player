@@ -10,6 +10,7 @@
 		8494266830A80A4000FC19B8 /* SwiftAudioEx in Frameworks */ = {isa = PBXBuildFile; productRef = 8494266730A80A4000FC19B8 /* SwiftAudioEx */; };
 		8494266B30A80A5200FC19B8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8494266A30A80A5200FC19B8 /* Alamofire */; };
 		849426B430A8182900FC19B8 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 849426B330A8182900FC19B8 /* Kingfisher */; };
+		849426BE30A83FF300FC19B8 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 849426BD30A83FF300FC19B8 /* ActivityIndicatorView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 			files = (
 				849426B430A8182900FC19B8 /* Kingfisher in Frameworks */,
 				8494266830A80A4000FC19B8 /* SwiftAudioEx in Frameworks */,
+				849426BE30A83FF300FC19B8 /* ActivityIndicatorView in Frameworks */,
 				8494266B30A80A5200FC19B8 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +92,7 @@
 				8494266730A80A4000FC19B8 /* SwiftAudioEx */,
 				8494266A30A80A5200FC19B8 /* Alamofire */,
 				849426B330A8182900FC19B8 /* Kingfisher */,
+				849426BD30A83FF300FC19B8 /* ActivityIndicatorView */,
 			);
 			productName = MusicPlayer;
 			productReference = 8494263F30A7FBCA00FC19B8 /* MusicPlayer.app */;
@@ -123,6 +126,7 @@
 				8494266630A80A4000FC19B8 /* XCRemoteSwiftPackageReference "SwiftAudio" */,
 				8494266930A80A5200FC19B8 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				849426B230A8182900FC19B8 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				849426BC30A83FF300FC19B8 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8494264030A7FBCA00FC19B8 /* Products */;
@@ -388,6 +392,14 @@
 				minimumVersion = 8.15.0;
 			};
 		};
+		849426BC30A83FF300FC19B8 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -405,6 +417,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 849426B230A8182900FC19B8 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		849426BD30A83FF300FC19B8 /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 849426BC30A83FF300FC19B8 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
